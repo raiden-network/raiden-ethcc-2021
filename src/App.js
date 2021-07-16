@@ -19,13 +19,17 @@ function App() {
     setChannelWithPartner(channelWithPartner);
   }
 
-  // TODO: function to handle transfer events
+  const onTransfersUpdate = (transfer) => {
+    if (transfer.completed) {
+      setTransferHistory([...transferHistory, transfer])
+    }
+  }
 
   async function connect() {
     await window.ethereum.request({ method: 'eth_requestAccounts' })
     const raiden = await Raiden.create(window.ethereum, 0, undefined, undefined, undefined, true);
     raiden.channels$.subscribe(onChannelsUpdate);
-    // TODO: subscribe to channel events
+    raiden.transfers$.subscribe(onTransfersUpdate);
     await raiden.start();
     await raiden.synced;
     setRaiden(raiden);
@@ -38,7 +42,11 @@ function App() {
     setOpenChannelInProgress(false);
   }
 
-  // TOOD: function to do a transfer
+  const transferToPartner = async () => {
+    setTransferInProgress(true)
+    await raiden.transfer(TOKEN_ADDRESS, PARTNER_ADDRESS, transferAmountInput);
+    setTransferInProgress(false);
+  }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => connect(), []);
@@ -72,9 +80,9 @@ function App() {
                 onChange={event => setTransferAmountInput(event.target.value)}
               />
               <button
-                className={transferInProgress ? 'loading' : ''}
-                // TODO: handle click
                 disabled={!channelWithPartner || transferInProgress}
+                className={transferInProgress ? 'loading' : ''}
+                onClick={transferToPartner}
               >
                 Transfer
               </button>
