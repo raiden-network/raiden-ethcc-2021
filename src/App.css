@@ -1,0 +1,101 @@
+.logo {
+  width: 150px;
+  filter: invert(90%);
+  animation: blinking 5s linear infinite;
+}
+
+@keyframes blinking {
+  0% { width: 150px; }
+  50% { width: 250px; }
+  100% { width: 150px; }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 10px;
+  height: 844px;
+  margin-top: 25px;
+  width: 620px;
+  padding: 30px;
+  background-color: #0f0e10;
+  border-radius: 10px;
+}
+
+.app__title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app__box {
+  display: flex;
+  position: relative;
+  background: #1e1e1e;
+  border-radius: 5px;
+  padding: 60px 25px 25px;
+  margin-bottom: 25px;
+}
+
+.app__box:last-of-type {
+  margin-bottom: 0;
+}
+
+.app__box__title {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.app__channel-status {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app__channel-status > * {
+  width: 45%;
+}
+
+.app__channel-status__capacity {
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.app__transfer-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.app__transfer-inputs > * {
+  width: 45%;
+}
+
+.app__transfer-history {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__transfer-history__entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  height: 50px;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.app__transfer-history__placeholder {
+  width: 100%;
+  text-align: center;
+  color: gray;
+  margin-top: 50px;
+}
