@@ -5,7 +5,7 @@ import './App.css';
 import logo from './assets/logo.svg';
 
 const TOKEN_ADDRESS = '0xC563388e2e2fdD422166eD5E76971D11eD37A466'
-const PARTNER_ADDRESS = '0xC01E19cEee7B4Fe80eD53Cf31b095aDd4b863C53'
+const PARTNER_ADDRESS = '0xB47D6A1Be8D9B783da57c78b886C9a33a1279c83'
 
 function App() {
   const [raiden, setRaiden] = useState();
